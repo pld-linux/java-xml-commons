@@ -1,9 +1,8 @@
-%define		beta		b2
-
 Summary:	Common code for XML projects
 Summary(pl):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
+%define		beta	b2
 Release:	0.%{beta}.1
 License:	Apache Software License
 Group:		Development/Languages/Java
@@ -15,8 +14,6 @@ URL:		http://xml.apache.org/commons/
 BuildRequires:	jakarta-ant
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_javalibdir	/usr/share/java
 
 %description
 xml-commons is focused on common code and guidelines for xml projects.
@@ -49,13 +46,13 @@ ant jars
 %install
 rm -rf $RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT%{_javalibdir}
+mkdir -p $RPM_BUILD_ROOT%{_javadir}
 
-cp java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-apis-%{version}.jar
-cp java/build/which.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-which-%{version}.jar
+cp java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis-%{version}.jar
+cp java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}.jar
 
-ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-apis.jar
-ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-which.jar
+ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
+ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,4 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc KEYS README.html java/external/build/docs/javadoc java/build/docs/javadocs
-%{_javalibdir}/*.jar
+%{_javadir}/*.jar
