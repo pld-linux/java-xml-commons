@@ -1,19 +1,19 @@
 %define		beta		b2
 
-Summary:        Common code for XML projects
+Summary:	Common code for XML projects
 Summary(pl):	Wspólny kod dla projektów XML
-Name:           xml-commons
-Version:        1.0
-Release:       	0.%{beta}.1
-License:        Apache Software License
+Name:		xml-commons
+Version:	1.0
+Release:	0.%{beta}.1
+License:	Apache Software License
 Group:		Development/Languages/Java
-Source0:        http://xml.apache.org/dist/commons/xml-commons-1.0.b2.tar.gz
+Source0:	http://xml.apache.org/dist/commons/xml-commons-1.0.b2.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
-Patch0:         xml-commons.build.patch
-Patch1:         xml-commons.manifest.patch
-URL:            http://xml.apache.org/commons/
-BuildRequires:  jakarta-ant
-BuildArch:      noarch
+Patch0:		xml-commons.build.patch
+Patch1:		xml-commons.manifest.patch
+URL:		http://xml.apache.org/commons/
+BuildRequires:	jakarta-ant
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_javalibdir	/usr/share/java
