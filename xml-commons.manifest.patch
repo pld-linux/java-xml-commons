@@ -1,0 +1,18 @@
+diff -Naru xml-commons-1.0.b2.orig/java/external/src/manifest.commons xml-commons-1.0.b2/java/external/src/manifest.commons
+--- xml-commons-1.0.b2.orig/java/external/src/manifest.commons	2002-02-06 17:52:49.000000000 +0200
++++ xml-commons-1.0.b2/java/external/src/manifest.commons	2002-11-13 23:48:12.000000000 +0200
+@@ -1,5 +1,4 @@
+ Manifest-Version: 1.0
+-Created-By: 1.2.2 (Sun Microsystems Inc.)
+ 
+ Name: org/apache/xmlcommons/Version
+ Comment: @impl.name@ for http://xml.apache.org/ subproject's use
+diff -Naru xml-commons-1.0.b2.orig/java/src/manifest.which xml-commons-1.0.b2/java/src/manifest.which
+--- xml-commons-1.0.b2.orig/java/src/manifest.which	2002-02-06 17:52:40.000000000 +0200
++++ xml-commons-1.0.b2/java/src/manifest.which	2002-11-13 23:48:02.000000000 +0200
+@@ -1,5 +1,4 @@
+ Manifest-Version: 1.0
+-Created-By: 1.2.2 (Sun Microsystems Inc.)
+ Main-Class: org.apache.env.Which
+ 
+ Name: org/apache/env
