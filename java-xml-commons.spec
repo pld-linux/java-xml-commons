@@ -54,8 +54,8 @@ mkdir -p $RPM_BUILD_ROOT%{_javalibdir}
 cp java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-apis-%{version}.jar
 cp java/build/which.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-which-%{version}.jar
 
-ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT/%{_javalibdir}/%{name}-apis.jar
-ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT/%{_javalibdir}/%{name}-which.jar
+ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-apis.jar
+ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javalibdir}/%{name}-which.jar
 
 %clean
 rm -rf $RPM_BUILD_ROOT
