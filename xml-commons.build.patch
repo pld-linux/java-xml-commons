@@ -1,0 +1,25 @@
+diff -Naru xml-commons-1.0.b2.orig/build.xml xml-commons-1.0.b2/build.xml
+--- xml-commons-1.0.b2.orig/build.xml	2002-02-06 17:53:15.000000000 +0200
++++ xml-commons-1.0.b2/build.xml	2002-11-13 23:51:26.000000000 +0200
+@@ -53,8 +53,10 @@
+           description="Calls all other java build files.">
+     <ant dir="java" antfile="which.xml" target="all" >
+     </ant>
++<!--
+     <ant dir="java" antfile="resolver.xml" target="all" >
+     </ant>
++-->
+   </target>
+ 
+   <target name="dist"
+@@ -95,8 +97,10 @@
+     </ant>
+     <ant dir="java" antfile="which.xml" target="clean" >
+     </ant>
++<!--
+     <ant dir="java" antfile="resolver.xml" target="clean" >
+     </ant>
++-->
+   </target>
+   
+ </project>
