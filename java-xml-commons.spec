@@ -33,7 +33,7 @@ guidelines across all xml.apache.org subprojects.
 Projekt xml-commons koncentruje siê na wspólnym kodzie i wytycznych
 dla projektów XML. Pierwszym celem bêdzie zorganizowanie i
 spakietowanie kodu wspólnego dla ró¿nych zewnêtrznych standardów
-zwi±zanych z XML - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
+zwi±zanych z XML-em - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
 
 %prep
 %setup -q -n %{name}-%{version}.%{beta}
