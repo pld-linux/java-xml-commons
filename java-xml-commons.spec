@@ -45,11 +45,10 @@ ant jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_javadir}
 
-mkdir -p $RPM_BUILD_ROOT%{_javadir}
-
-cp java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis-%{version}.jar
-cp java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}.jar
+install java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis-%{version}.jar
+install java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}.jar
 
 ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
 ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
