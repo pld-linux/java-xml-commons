@@ -11,7 +11,7 @@ Source0:	http://xml.apache.org/dist/commons/xml-commons-1.0.b2.tar.gz
 Patch0:		xml-commons.build.patch
 Patch1:		xml-commons.manifest.patch
 URL:		http://xml.apache.org/commons/
-BuildRequires:	jakarta-ant
+BuildRequires:	ant
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
