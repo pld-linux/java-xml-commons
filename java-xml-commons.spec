@@ -6,10 +6,10 @@ Version:	1.0
 Release:	0.%{beta}.1
 License:	Apache Software License
 Group:		Development/Languages/Java
-Source0:	http://xml.apache.org/dist/commons/xml-commons-1.0.b2.tar.gz
+Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{beta}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
-Patch0:		xml-commons.build.patch
-Patch1:		xml-commons.manifest.patch
+Patch0:		%{name}.build.patch
+Patch1:		%{name}.manifest.patch
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
 BuildArch:	noarch
