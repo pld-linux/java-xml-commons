@@ -4,7 +4,7 @@ Summary:	Common code for XML projects
 Summary(pl):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
-Release:	0.%{beta}.1
+Release:	0.%{_beta}.1
 License:	Apache Software License
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.gz
@@ -36,6 +36,14 @@ dla projektów XML. Pierwszym celem bêdzie zorganizowanie i
 spakietowanie kodu wspólnego dla ró¿nych zewnêtrznych standardów
 zwi±zanych z XML-em - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
 
+%package javadoc
+Summary:	Online manual for xml-commons
+Group:		Documentation
+Requires:	jpackage-utils
+
+%description javadoc
+Documentation for xml-commons.
+
 %prep
 %setup -q -n %{name}-%{version}.%{_beta}
 %patch0 -p1
@@ -58,10 +66,27 @@ install java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}
 ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
 ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
 
+# javadoc
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+cp -a java/external/build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post javadoc
+rm -f %{_javadocdir}/%{name}
+ln -s %{name}-%{version} %{_javadocdir}/%{name}
+
+%postun javadoc
+if [ "$1" = "0" ]; then
+	rm -f %{_javadocdir}/%{name}
+fi
+
 %files
 %defattr(644,root,root,755)
-%doc KEYS README.html java/external/build/docs/javadoc java/build/docs/javadocs
+%doc KEYS README.html
 %{_javadir}/*.jar
+
+%files javadoc
+%defattr(644,root,root,755)
+%{_javadocdir}/%{name}-%{version}
