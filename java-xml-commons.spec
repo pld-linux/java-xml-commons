@@ -1,17 +1,20 @@
+%define		_beta	b2
+%define		_rel	2
 Summary:	Common code for XML projects
 Summary(pl):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
-%define		beta	b2
 Release:	0.%{beta}.1
 License:	Apache Software License
 Group:		Development/Languages/Java
-Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{beta}.tar.gz
+Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
 Patch0:		%{name}.build.patch
 Patch1:		%{name}.manifest.patch
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
+BuildRequires:	jpackage-utils
+BuildRequires:	rpmbuild(macros) >= 1.300
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,15 +36,16 @@ spakietowanie kodu wspólnego dla ró¿nych zewnêtrznych standardów
 zwi±zanych z XML-em - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
 
 %prep
-%setup -q -n %{name}-%{version}.%{beta}
+%setup -q -n %{name}-%{version}.%{_beta}
 %patch0 -p1
 %patch1 -p1
+
 # remove all binary libs and prebuilt javadocs
-rm -rf `find . -name "*.jar" -o -name "*.gz"`
+find -name "*.jar" -o -name "*.gz" | xargs rm -rf
 rm -rf java/build java/external/build/docs/javadoc
 
 %build
-ant jars
+%ant jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
