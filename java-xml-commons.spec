@@ -38,11 +38,15 @@ zwi±zanych z XML-em - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
 
 %package javadoc
 Summary:	Online manual for xml-commons
+Summary(pl):	Dokumentacja online dla xml-commons
 Group:		Documentation
 Requires:	jpackage-utils
 
 %description javadoc
 Documentation for xml-commons.
+
+%description javadoc -l pl
+Dokumentacja dla xml-commons.
 
 %prep
 %setup -q -n %{name}-%{version}.%{_beta}
