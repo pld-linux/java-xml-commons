@@ -1,7 +1,7 @@
 %define		_beta	b2
 %define		_rel	2
 Summary:	Common code for XML projects
-Summary(pl.UTF-8):   Wspólny kod dla projektów XML
+Summary(pl.UTF-8):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
 Release:	0.%{_beta}.1
@@ -38,7 +38,7 @@ związanych z XML-em - rzeczy takich jak DOM, SAX oraz interfejsy JAXP.
 
 %package javadoc
 Summary:	Online manual for xml-commons
-Summary(pl.UTF-8):   Dokumentacja online dla xml-commons
+Summary(pl.UTF-8):	Dokumentacja online dla xml-commons
 Group:		Documentation
 Requires:	jpackage-utils
 
