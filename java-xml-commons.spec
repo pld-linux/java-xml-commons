@@ -1,10 +1,11 @@
 %define		_beta	b2
-%define		_rel	2
+%define		_rel	3
+%include	/usr/lib/rpm/macros.java
 Summary:	Common code for XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
-Release:	0.%{_beta}.1
+Release:	0.%{_beta}.%{_rel}
 License:	Apache Software License
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.gz
@@ -14,9 +15,10 @@ Patch1:		%{name}.manifest.patch
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+Requires:	jpackage-utils
 BuildArch:	noarch
-ExclusiveArch:	i586 i686 pentium3 pentium4 athlon %{x8664} noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,24 +69,19 @@ install -d $RPM_BUILD_ROOT%{_javadir}
 install java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis-%{version}.jar
 install java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}.jar
 
-ln -sf %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
-ln -sf %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
+ln -s %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
+ln -s %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 cp -a java/external/build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-rm -f %{_javadocdir}/%{name}
-ln -s %{name}-%{version} %{_javadocdir}/%{name}
-
-%postun javadoc
-if [ "$1" = "0" ]; then
-	rm -f %{_javadocdir}/%{name}
-fi
+ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files
 %defattr(644,root,root,755)
@@ -94,3 +91,4 @@ fi
 %files javadoc
 %defattr(644,root,root,755)
 %{_javadocdir}/%{name}-%{version}
+%ghost %{_javadocdir}/%{name}
