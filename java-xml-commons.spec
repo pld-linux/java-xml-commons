@@ -6,7 +6,7 @@ Summary(pl.UTF-8):	Wspólny kod dla projektów XML
 Name:		xml-commons
 Version:	1.0
 Release:	0.%{_beta}.%{_rel}
-License:	Apache Software License
+License:	Apache
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
