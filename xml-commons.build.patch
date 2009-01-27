@@ -34,3 +34,14 @@ diff -Naru xml-commons-1.0.b2.orig/build.xml xml-commons-1.0.b2/build.xml
    </target>
  
    <target name="jar" depends="compile"
+--- xml-commons-1.0.b2/java/external/build.xml~	2002-02-06 16:52:59.000000000 +0100
++++ xml-commons-1.0.b2/java/external/build.xml	2009-01-27 16:58:31.000000000 +0100
+@@ -65,7 +65,7 @@
+ 
+   <target name="compile" depends="prepare"
+     description="Compile all classes">
+-   <javac srcdir="${src.dir}" destdir="${build.classes.dir}" />
++   <javac srcdir="${src.dir}" destdir="${build.classes.dir}" target="1.4" />
+   </target>
+ 
+   <target name="jar" depends="compile"
