@@ -61,10 +61,6 @@ Dokumentacja dla xml-commons.
 %patch0 -p1
 %patch1 -p1
 
-# remove all binary libs and prebuilt javadocs
-# find -name "*.jar" -o -name "*.gz" | xargs rm -rf
-# rm -rf java/build java/external/build/docs/javadoc
-
 %build
 %ant jars
 
