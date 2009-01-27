@@ -17,6 +17,7 @@ BuildRequires:	ant
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,12 +53,17 @@ Dokumentacja dla xml-commons.
 
 %prep
 %setup -q -n %{name}-%{version}.%{_beta}
+
+%{__sed} -i -e 's,\r$,,' build.xml
+%{__sed} -i -e 's,\r$,,' java/which.xml
+%{__sed} -i -e 's,\r$,,' java/external/build.xml
+
 %patch0 -p1
 %patch1 -p1
 
 # remove all binary libs and prebuilt javadocs
-find -name "*.jar" -o -name "*.gz" | xargs rm -rf
-rm -rf java/build java/external/build/docs/javadoc
+# find -name "*.jar" -o -name "*.gz" | xargs rm -rf
+# rm -rf java/build java/external/build/docs/javadoc
 
 %build
 %ant jars
