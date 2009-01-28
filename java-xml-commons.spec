@@ -13,7 +13,9 @@ Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.
 Patch0:		%{name}.build.patch
 Patch1:		%{name}.manifest.patch
 URL:		http://xml.apache.org/commons/
-BuildRequires:	ant
+# ant >= 1.7.1-3 is required because of ant-gcjtask.patch
+BuildRequires:	ant >= 1.7.1-3
+BuildRequires:	gcj
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -62,7 +64,8 @@ Dokumentacja dla xml-commons.
 %patch1 -p1
 
 %build
-%ant jars
+%ant clean
+%ant jars -Dbuild.compiler=gcj
 
 %install
 rm -rf $RPM_BUILD_ROOT
