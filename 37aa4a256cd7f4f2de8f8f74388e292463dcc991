@@ -1,0 +1,4 @@
+- use gcj not sun javac (so now we could build it on i486)
+- BR: gcj, ant >= 1.7.1-3 (because of ant-gcjtask.patch)
+- what happened to "%ant clean"? I am almost sure that I'v added it in last
+  commit... strange...
