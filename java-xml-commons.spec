@@ -1,15 +1,15 @@
-%define		_beta	b2
-%define		_rel	3
+%define		subver	b2
+%define		rel		3
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
 Name:		java-%{srcname}
 Version:	1.0
-Release:	0.%{_beta}.%{_rel}
+Release:	0.%{subver}.%{rel}
 License:	Apache
 Group:		Development/Languages/Java
-Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{_beta}.tar.gz
+Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{subver}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
 Patch0:		%{srcname}.build.patch
 Patch1:		%{srcname}.manifest.patch
@@ -22,8 +22,8 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
-Provides:	%{srcname}
-Obsoletes:	%{srcname}
+Provides:	xml-commons
+Obsoletes:	xml-commons
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,7 +58,7 @@ Documentation for xml-commons.
 Dokumentacja dla xml-commons.
 
 %prep
-%setup -q -n %{srcname}-%{version}.%{_beta}
+%setup -q -n %{srcname}-%{version}.%{subver}
 
 %{__sed} -i -e 's,\r$,,' build.xml
 %{__sed} -i -e 's,\r$,,' java/which.xml
