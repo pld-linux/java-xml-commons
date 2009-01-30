@@ -1,17 +1,18 @@
 %define		_beta	b2
 %define		_rel	3
+%define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
-Summary:	Common code for XML projects
-Summary(pl.UTF-8):	Wspólny kod dla projektów XML
-Name:		xml-commons
+Summary:	Common code for Apache XML projects
+Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
+Name:		java-%{srcname}
 Version:	1.0
 Release:	0.%{_beta}.%{_rel}
 License:	Apache
 Group:		Development/Languages/Java
-Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}.%{_beta}.tar.gz
+Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{_beta}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
-Patch0:		%{name}.build.patch
-Patch1:		%{name}.manifest.patch
+Patch0:		%{srcname}.build.patch
+Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
 # ant >= 1.7.1-3 is required because of ant-gcjtask.patch
 BuildRequires:	ant >= 1.7.1-3
@@ -21,6 +22,8 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
+Provides:	%{srcname}
+Obsoletes:	%{srcname}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,6 +49,7 @@ Summary:	Online manual for xml-commons
 Summary(pl.UTF-8):	Dokumentacja online dla xml-commons
 Group:		Documentation
 Requires:	jpackage-utils
+Obsoletes:	xml-commons
 
 %description javadoc
 Documentation for xml-commons.
@@ -54,7 +58,7 @@ Documentation for xml-commons.
 Dokumentacja dla xml-commons.
 
 %prep
-%setup -q -n %{name}-%{version}.%{_beta}
+%setup -q -n %{srcname}-%{version}.%{_beta}
 
 %{__sed} -i -e 's,\r$,,' build.xml
 %{__sed} -i -e 's,\r$,,' java/which.xml
@@ -71,22 +75,22 @@ Dokumentacja dla xml-commons.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_javadir}
 
-install java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis-%{version}.jar
-install java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which-%{version}.jar
+install java/external/build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-apis-%{version}.jar
+install java/build/which.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-which-%{version}.jar
 
-ln -s %{name}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-apis.jar
-ln -s %{name}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-which.jar
+ln -s %{srcname}-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-apis.jar
+ln -s %{srcname}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-which.jar
 
 # javadoc
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a java/external/build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a java/external/build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -95,5 +99,5 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
