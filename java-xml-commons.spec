@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel		3
+%define		rel		4
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
 Summary:	Common code for Apache XML projects
