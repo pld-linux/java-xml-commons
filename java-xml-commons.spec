@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel		4
+%define		rel		5
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
 Summary:	Common code for Apache XML projects
@@ -16,7 +16,7 @@ Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
 # ant >= 1.7.1-3 is required because of ant-gcjtask.patch
 BuildRequires:	ant >= 1.7.1-3
-BuildRequires:	gcj
+BuildRequires:	java-gcj-compat
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -49,7 +49,7 @@ Summary:	Online manual for xml-commons
 Summary(pl.UTF-8):	Dokumentacja online dla xml-commons
 Group:		Documentation
 Requires:	jpackage-utils
-Obsoletes:	xml-commons
+Obsoletes:	xml-commons-javadoc
 
 %description javadoc
 Documentation for xml-commons.
@@ -69,7 +69,7 @@ Dokumentacja dla xml-commons.
 
 %build
 %ant clean
-%ant jars -Dbuild.compiler=gcj
+%ant jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
