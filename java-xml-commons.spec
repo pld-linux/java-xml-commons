@@ -69,7 +69,7 @@ Dokumentacja dla xml-commons.
 
 %build
 %ant clean
-%ant jars
+%ant -Dbuild.compiler=gcj jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
