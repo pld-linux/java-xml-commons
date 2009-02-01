@@ -16,7 +16,7 @@ Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
 # ant >= 1.7.1-3 is required because of ant-gcjtask.patch
 BuildRequires:	ant >= 1.7.1-3
-BuildRequires:	java-gcj-compat
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
