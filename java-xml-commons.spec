@@ -8,7 +8,7 @@ Name:		java-%{srcname}
 Version:	1.0
 Release:	0.%{subver}.%{rel}
 License:	Apache
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{subver}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
 Patch0:		%{srcname}.build.patch
