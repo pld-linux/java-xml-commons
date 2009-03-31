@@ -16,7 +16,7 @@ Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
 Name:		java-%{srcname}
 Version:	1.0
 Release:	0.%{subver}.%{rel}
-License:	Apache
+License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{subver}.tar.gz
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
@@ -24,9 +24,13 @@ Patch0:		%{srcname}.build.patch
 Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
 # ant >= 1.7.1-3 is required because of ant-gcjtask.patch
+%if %{with java_sun}
+BuildRequires:	ant
+BuildRequires:	java-sun
+%else
 BuildRequires:	ant >= 1.7.1-3
-%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires: java-sun}
+BuildRequires:	java-gcj-compat-devel
+%endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
@@ -43,11 +47,6 @@ xml-commons is focused on common code and guidelines for xml projects.
 Its first focus will be to organize and have common packaging for the
 various externally-defined standards code relating to XML - things
 like the DOM, SAX, and JAXP interfaces.
-
-As the xml-commons community forms, we also hope to serve as a holding
-area for other common xml-related utilities and code, and to help
-promulgate common packaging, testing, documentation, and other
-guidelines across all xml.apache.org subprojects.
 
 %description -l pl.UTF-8
 Projekt xml-commons koncentruje się na wspólnym kodzie i wytycznych
