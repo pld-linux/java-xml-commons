@@ -30,7 +30,7 @@ diff -Naru xml-commons-1.0.b2.orig/build.xml xml-commons-1.0.b2/build.xml
      description="Compile all classes">
     <javac srcdir="${src.dir}" destdir="${build.classes.dir}" 
 -       includes="${env.subdir}/*.java" />
-+       includes="${env.subdir}/*.java" source="1.4"/>
++       includes="${env.subdir}/*.java" source="1.4" target="1.4"/>
    </target>
  
    <target name="jar" depends="compile"
@@ -41,7 +41,7 @@ diff -Naru xml-commons-1.0.b2.orig/build.xml xml-commons-1.0.b2/build.xml
    <target name="compile" depends="prepare"
      description="Compile all classes">
 -   <javac srcdir="${src.dir}" destdir="${build.classes.dir}" />
-+   <javac srcdir="${src.dir}" destdir="${build.classes.dir}" target="1.4" />
++   <javac srcdir="${src.dir}" destdir="${build.classes.dir}" source="1.4" target="1.4"/>
    </target>
  
    <target name="jar" depends="compile"
