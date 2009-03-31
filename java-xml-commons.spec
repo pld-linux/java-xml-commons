@@ -1,7 +1,16 @@
+#
+# Conditional build:
+%if "%{pld_release}" == "ti"
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
+%endif
+#
 %define		subver	b2
-%define		rel		5
+%define		rel		6
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
+
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
 Name:		java-%{srcname}
@@ -16,8 +25,10 @@ Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
 # ant >= 1.7.1-3 is required because of ant-gcjtask.patch
 BuildRequires:	ant >= 1.7.1-3
-BuildRequires:	java-gcj-compat-devel
+%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires: java-sun}
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
@@ -69,7 +80,7 @@ Dokumentacja dla xml-commons.
 
 %build
 %ant clean
-%ant -Dbuild.compiler=gcj jars
+%ant jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
