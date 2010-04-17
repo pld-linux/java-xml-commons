@@ -29,7 +29,7 @@ BuildRequires:	ant
 BuildRequires:	java-sun
 %else
 BuildRequires:	ant >= 1.7.1-3
-BuildRequires:	java-gcj-compat-devel
+BuildRequires:	jdk
 %endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
