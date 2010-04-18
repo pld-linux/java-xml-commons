@@ -1,13 +1,6 @@
 #
-# Conditional build:
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-#
 %define		subver	b2
-%define		rel		6
+%define		rel		7
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
 
@@ -23,14 +16,8 @@ Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{subver}.
 Patch0:		%{srcname}.build.patch
 Patch1:		%{srcname}.manifest.patch
 URL:		http://xml.apache.org/commons/
-# ant >= 1.7.1-3 is required because of ant-gcjtask.patch
-%if %{with java_sun}
 BuildRequires:	ant
-BuildRequires:	java-sun
-%else
-BuildRequires:	ant >= 1.7.1-3
 BuildRequires:	jdk
-%endif
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
