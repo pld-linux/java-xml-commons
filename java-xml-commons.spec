@@ -1,6 +1,6 @@
 #
 %define		subver	b2
-%define		rel		7
+%define		rel		8
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
 
