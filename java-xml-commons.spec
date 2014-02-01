@@ -1,9 +1,7 @@
-#
 %define		subver	b2
-%define		rel		8
+%define		rel		9
 %define		srcname	xml-commons
 %include	/usr/lib/rpm/macros.java
-
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
 Name:		java-%{srcname}
@@ -24,7 +22,6 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
-Provides:	xml-commons
 Obsoletes:	xml-commons
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
