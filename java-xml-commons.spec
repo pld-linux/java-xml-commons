@@ -22,6 +22,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
+Provides:	java(xml-commons-apis)
 Obsoletes:	xml-commons
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
