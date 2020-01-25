@@ -1,7 +1,6 @@
 %define		subver	b2
 %define		rel		10
 %define		srcname	xml-commons
-%include	/usr/lib/rpm/macros.java
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
 Name:		java-%{srcname}
