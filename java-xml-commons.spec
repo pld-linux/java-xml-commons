@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel	10
+%define		rel	11
 %define		srcname	xml-commons
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
@@ -21,7 +21,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	sed >= 4.0
 Requires:	jpackage-utils
-Provides:	java(xml-commons-apis)
+Provides:	java(xml-commons-apis) = %{version}
 Obsoletes:	xml-commons < 1.0-1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
