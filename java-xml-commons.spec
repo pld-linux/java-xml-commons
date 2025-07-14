@@ -58,8 +58,8 @@ Dokumentacja dla xml-commons.
 %{__sed} -i -e 's,\r$,,' java/which.xml
 %{__sed} -i -e 's,\r$,,' java/external/build.xml
 
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %ant clean
