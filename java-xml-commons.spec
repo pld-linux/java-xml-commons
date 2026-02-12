@@ -64,7 +64,9 @@ Dokumentacja dla xml-commons.
 %build
 %ant clean
 
-%ant jars
+%ant jars \
+	-Dant.build.javac.target=1.8 \
+	-Dant.build.javac.source=1.8
 
 %install
 rm -rf $RPM_BUILD_ROOT
