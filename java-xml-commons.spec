@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel	12
+%define		rel	13
 %define		srcname	xml-commons
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
@@ -64,9 +64,7 @@ Dokumentacja dla xml-commons.
 %build
 %ant clean
 
-%ant jars \
-	-Dant.build.javac.target=1.8 \
-	-Dant.build.javac.source=1.8
+%ant jars
 
 %install
 rm -rf $RPM_BUILD_ROOT
