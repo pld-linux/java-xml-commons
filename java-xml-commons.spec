@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel	11
+%define		rel	12
 %define		srcname	xml-commons
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
