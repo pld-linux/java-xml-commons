@@ -1,5 +1,5 @@
 %define		subver	b2
-%define		rel	13
+%define		rel	14
 %define		srcname	xml-commons
 Summary:	Common code for Apache XML projects
 Summary(pl.UTF-8):	Wspólny kod dla projektów Apache XML
@@ -12,6 +12,7 @@ Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}.%{subver}.
 # Source0-md5:	6c6551ece56948ee535d5f5014489b8d
 Patch0:		%{srcname}.build.patch
 Patch1:		%{srcname}.manifest.patch
+Patch2:		%{srcname}.enum-keyword.patch
 URL:		https://xerces.apache.org/xml-commons/
 BuildRequires:	ant
 BuildRequires:	jdk
@@ -57,9 +58,11 @@ Dokumentacja dla xml-commons.
 %{__sed} -i -e 's,\r$,,' build.xml
 %{__sed} -i -e 's,\r$,,' java/which.xml
 %{__sed} -i -e 's,\r$,,' java/external/build.xml
+%{__sed} -i -e 's,\r$,,' java/src/org/apache/env/Which.java
 
 %patch -P0 -p1
 %patch -P1 -p1
+%patch -P2 -p1
 
 %build
 %ant clean
@@ -78,7 +81,7 @@ ln -s %{srcname}-which-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-whic
 
 # javadoc
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
-cp -a java/external/build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a java/external/build/docs/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
 ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
