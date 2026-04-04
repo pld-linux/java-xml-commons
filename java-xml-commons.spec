@@ -1,8 +1,10 @@
+%{?use_default_jdk:%use_default_jdk 8}
+
 Summary:	Common XML APIs for Java (DOM, SAX, JAXP)
 Summary(pl.UTF-8):	Wspólne API XML dla Javy (DOM, SAX, JAXP)
 Name:		java-xml-commons
 Version:	1.4.01
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
 # Use OBS repacked source because the Apache external tarball lacks the
@@ -12,12 +14,13 @@ Group:		Libraries/Java
 Source0:	https://build.opensuse.org/public/source/openSUSE:Factory/xml-commons-apis/xml-commons-external-%{version}-src.tar.xz
 URL:		https://xerces.apache.org/xml-commons/
 BuildRequires:	ant
-BuildRequires:	jdk
+%buildrequires_jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 Requires:	jpackage-utils
 Provides:	java(xml-commons-apis) = %{version}
 Obsoletes:	xml-commons < 1.0-1
+BuildRequires:	rpmbuild(macros) >= 1.556
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
